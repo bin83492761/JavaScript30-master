@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>JS + CSS Clock</title>
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+
+<body>
+
+
+  <div class="clock">
+    <div class="clock-face">
+      <div class="hand hour-hand"></div>
+      <div class="hand min-hand"></div>
+      <div class="hand second-hand"></div>
+    </div>
+  </div>
+
+
+  <style>
+    html {
+      background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5);
+      background-size: cover;
+      font-family: 'helvetica neue';
+      text-align: center;
+      font-size: 10px;
+    }
+
+    body {
+      margin: 0;
+      font-size: 2rem;
+      display: flex;
+      flex: 1;
+      min-height: 100vh;
+      align-items: center;
+    }
+
+    .clock {
+      width: 30rem;
+      height: 30rem;
+      border: 20px solid white;
+      border-radius: 50%;
+      margin: 50px auto;
+      position: relative;
+      padding: 2rem;
+      box-shadow:
+        0 0 0 4px rgba(0, 0, 0, 0.1),
+        inset 0 0 0 3px #EFEFEF,
+        inset 0 0 10px black,
+        0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .clock-face {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform: translateY(-3px);
+      /* account for the height of the clock hands */
+    }
+
+    /* 這樣設定的指針，程式碼的0度 = 畫面的90度 */
+    .hand {
+      width: 100%;
+      height: 6px;
+      position: absolute;
+      top: 50%;
+    }
+
+    .hour-hand {
+      background: linear-gradient(to left, black 0%, black 50%, transparent 51%, transparent 100%);
+    }
+
+    .min-hand {
+      background: linear-gradient(to left, lightpink 0%, lightpink 50%, transparent 51%, transparent 100%);
+    }
+
+    .second-hand {
+      background: linear-gradient(to left, cornflowerblue 0%, cornflowerblue 50%, transparent 51%, transparent 100%);
+    }
+  </style>
+
+  <!-- 時針每小時動30度，每分鐘動0.5度 -->
+  <!-- 分針每分鐘動6度，每秒動0.1度 -->
+  <!-- 秒針每秒動6度 -->
+
+  <script>
+    const hourHand = document.querySelector('.hour-hand')
+    const minuteHand = document.querySelector('.min-hand')
+    const secondHand = document.querySelector('.second-hand')
+
+    // 此處為宣告+網頁初讀取的程式
+    
+    let date = new Date()
+    let hour = date.getHours()
+    let minute = date.getMinutes()
+    let second = date.getSeconds()
+    if (hour > 12) {
+      hour = hour - 12
+    }
+
+    let hourDeg = (hour * 30) + (minute * 0.5) - 90 //-90是為了將畫面角度調整到與程式的變數角度相同
+    let minuteDeg = (minute * 6) + (second * 0.1) - 90
+    let secondDeg = second * 6
+
+    hourHand.style.transform = `rotate(${hourDeg}deg)`
+    minuteHand.style.transform = `rotate(${minuteDeg}deg)`
+    secondHand.style.transform = `rotate(${secondDeg}deg)`
+
+    // 此處為每秒重新讀取的程式
+
+    setInterval(() => {
+      date = new Date()
+      hour = date.getHours()
+      minute = date.getMinutes()
+      second = date.getSeconds()
+      if (hour > 12) {
+        hour = hour - 12
+      }
+
+      hourDeg = (hour * 30) + (minute * 0.5) - 90
+      minuteDeg = (minute * 6) + (second * 0.1) - 90
+      secondDeg = second * 6
+
+      hourHand.style.transform = `rotate(${hourDeg}deg)`
+      minuteHand.style.transform = `rotate(${minuteDeg}deg)`
+      secondHand.style.transform = `rotate(${secondDeg}deg)`
+
+    }, 1000)
+
+  </script>
+</body>
+
+</html>
