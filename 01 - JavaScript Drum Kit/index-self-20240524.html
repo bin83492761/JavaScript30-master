@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>JS Drum Kit</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+
+<body>
+
+
+  <div class="keys">
+    <div data-key="65" class="key">
+      <kbd>A</kbd>
+      <span class="sound">clap</span>
+    </div>
+    <div data-key="83" class="key">
+      <kbd>S</kbd>
+      <span class="sound">hihat</span>
+    </div>
+    <div data-key="68" class="key">
+      <kbd>D</kbd>
+      <span class="sound">kick</span>
+    </div>
+    <div data-key="70" class="key">
+      <kbd>F</kbd>
+      <span class="sound">openhat</span>
+    </div>
+    <div data-key="71" class="key">
+      <kbd>G</kbd>
+      <span class="sound">boom</span>
+    </div>
+    <div data-key="72" class="key">
+      <kbd>H</kbd>
+      <span class="sound">ride</span>
+    </div>
+    <div data-key="74" class="key">
+      <kbd>J</kbd>
+      <span class="sound">snare</span>
+    </div>
+    <div data-key="75" class="key">
+      <kbd>K</kbd>
+      <span class="sound">tom</span>
+    </div>
+    <div data-key="76" class="key">
+      <kbd>L</kbd>
+      <span class="sound">tink</span>
+    </div>
+  </div>
+
+  <audio data-key="65" src="sounds/clap.wav"></audio>
+  <audio data-key="83" src="sounds/hihat.wav"></audio>
+  <audio data-key="68" src="sounds/kick.wav"></audio>
+  <audio data-key="70" src="sounds/openhat.wav"></audio>
+  <audio data-key="71" src="sounds/boom.wav"></audio>
+  <audio data-key="72" src="sounds/ride.wav"></audio>
+  <audio data-key="74" src="sounds/snare.wav"></audio>
+  <audio data-key="75" src="sounds/tom.wav"></audio>
+  <audio data-key="76" src="sounds/tink.wav"></audio>
+
+  <script>
+    const btnClap = document.querySelector('div[data-key="65"]')
+    const btnHihat = document.querySelector('div[data-key="83"]')
+    const btnKick = document.querySelector('div[data-key="68"]')
+    const btnOpenhat = document.querySelector('div[data-key="70"]')
+    const btnBoom = document.querySelector('div[data-key="71"]')
+    const btnRide = document.querySelector('div[data-key="72"]')
+    const btnSnare = document.querySelector('div[data-key="74"]')
+    const btnTom = document.querySelector('div[data-key="75"]')
+    const btnTink = document.querySelector('div[data-key="76"]')
+
+    const clap = document.querySelector('audio[data-key="65"]')
+    const hihat = document.querySelector('audio[data-key="83"]')
+    const kick = document.querySelector('audio[data-key="68"]')
+    const openhat = document.querySelector('audio[data-key="70"]')
+    const boom = document.querySelector('audio[data-key="71"]')
+    const ride = document.querySelector('audio[data-key="72"]')
+    const snare = document.querySelector('audio[data-key="74"]')
+    const tom = document.querySelector('audio[data-key="75"]')
+    const tink = document.querySelector('audio[data-key="76"]')
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key == 'a') {
+        clap.pause()
+        clap.currentTime = 0
+        btnClap.classList.add('playing')
+        clap.play()
+        setTimeout(() => {
+          btnClap.classList.remove('playing')
+        }, '70')
+      }
+      if (event.key == 's') {
+        hihat.pause()
+        hihat.currentTime = 0
+        btnHihat.classList.add('playing')
+        hihat.play()
+        setTimeout(() => {
+          btnHihat.classList.remove('playing')
+        }, '70')
+      }
+      if (event.key == 'd') {
+        kick.pause()
+        kick.currentTime = 0
+        btnKick.classList.add('playing')
+        kick.play()
+        setTimeout(() => {
+          btnKick.classList.remove('playing')
+        }, '70')
+      }
+      if (event.key == 'f') {
+        openhat.pause()
+        openhat.currentTime = 0
+        btnOpenhat.classList.add('playing')
+        openhat.play()
+        setTimeout(() => {
+          btnOpenhat.classList.remove('playing')
+        }, '70')
+      }
+      if (event.key == 'g') {
+        boom.pause()
+        boom.currentTime = 0
+        btnBoom.classList.add('playing')
+        boom.play()
+        setTimeout(() => {
+          btnBoom.classList.remove('playing')
+        }, '70')
+      }
+      if (event.key == 'h') {
+        ride.pause()
+        ride.currentTime = 0
+        btnRide.classList.add('playing')
+        ride.play()
+        setTimeout(() => {
+          btnRide.classList.remove('playing')
+        }, '70')
+      }
+      if (event.key == 'j') {
+        snare.pause()
+        snare.currentTime = 0
+        btnSnare.classList.add('playing')
+        snare.play()
+        setTimeout(() => {
+          btnSnare.classList.remove('playing')
+        }, '70')
+      }
+      if (event.key == 'k') {
+        tom.pause()
+        tom.currentTime = 0
+        btnTom.classList.add('playing')
+        tom.play()
+        setTimeout(() => {
+          btnTom.classList.remove('playing')
+        }, '70')
+      }
+      if (event.key == 'l') {
+        tink.pause()
+        tink.currentTime = 0
+        btnTink.classList.add('playing')
+        tink.play()
+        setTimeout(() => {
+          btnTink.classList.remove('playing')
+        }, '70')
+      }
+    })
+  </script>
+
+</body>
+
+</html>
